@@ -1,0 +1,34 @@
+.newReview_container{
+
+    form{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        textArea{
+            padding: 10px;
+            min-height: 30px;
+            width: 93% !important;
+            font-family: Nunito;
+            background-color: rgba(255, 255, 255, 0.09);
+            color: white;
+            margin: 10px 0;
+        }
+
+        button{
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.262);
+            color: white;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 100%;
+            font-size: 16px;
+        }
+    }
+
+    .icon-color{
+        color: $yellow;
+    }
+}

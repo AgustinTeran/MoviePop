@@ -1,0 +1,22 @@
+.nav_container{
+    display: flex;
+    justify-content: space-between;
+    height: 77px;
+
+    div{
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 25px 15px;
+    }
+
+    .icon{
+        color: white;
+        font-size: 20px;
+    }
+
+    .active{
+        color: $yellow;
+    }
+}
+

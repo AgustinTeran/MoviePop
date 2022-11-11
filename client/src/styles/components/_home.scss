@@ -1,0 +1,20 @@
+.home_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 77px);
+    outline: solid 2px white;
+
+    img{
+        width: 100%;
+        max-width: 300px;
+        margin-right: 3px;
+    }
+
+    h1{
+        margin: 0;
+        color: $yellow;
+        font-size: 40px;
+    }
+}
