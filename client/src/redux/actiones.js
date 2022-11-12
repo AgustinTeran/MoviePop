@@ -4,9 +4,13 @@ var back = axios.create({
     baseURL: "http://localhost:3001"
 })
 
+var api = axios.create({
+    baseURL: "https://api.tvmaze.com"
+})
+
 export function Films(film){
     return function(dispatch){
-        axios.get(`http://api.tvmaze.com/search/shows?q=${film}`)
+        api.get(`/search/shows?q=${film}`)
         .then(res => dispatch({type:"FILMS", payload:res.data}))
         .catch(err => console.error(err))
     }
@@ -14,7 +18,7 @@ export function Films(film){
 
 export function Details(id){
     return function(dispatch){
-        axios.get(`https://api.tvmaze.com/shows/${id}`)
+        api.get(`/shows/${id}`)
         .then(res => dispatch({type:"DETAIL", payload:res.data}))
         .catch(err => console.error(err))
     }
