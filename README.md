@@ -15,7 +15,7 @@
  <p>1) Descargar las dependencias:</p>
  <h6>npm i</h6>
  <br/>
- <p>2) Crear una base de datos en postgreSQL (Es necesario tener instalado postgres):</p>
+ <p>2) Crear una base de datos en postgreSQL (<a href="https://www.postgresql.org/download/">Es necesario tener instalado postgres</a>):</p>
  <h6>Vamos a la terminal de nuestra PC, en el caso de windows: con la "tecla windows + r", escribimos "cmd" y enter.</h6>
  <h5>Escribimos "psql -U -su nombre de usuario de postgres (por defecto es postgres)-"</h5>
  <span>En mi caso: psql -U postgres</span>
