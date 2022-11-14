@@ -1,4 +1,3 @@
-require("pg")
 var server = require("./server")
 var {sequelize} = require("./db")
 

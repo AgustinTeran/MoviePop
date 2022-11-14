@@ -8,7 +8,7 @@ export default function Favorites(){
     var {favorites} = useSelector(state => state)
     
     return (
-        <div>
+        <>
             
             <div className="search_filmsContainer">
                 {
@@ -17,12 +17,12 @@ export default function Favorites(){
                     ) : favorites.length? (
                         favorites.map(e => <Card key={e.id} name={e.name} image={e.image} id={e.id}/>)
                     ) : (
-                        <div>
-                            No tienes fav
+                        <div style={{height:"100%",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",textAlign:"center"}}>
+                            <h1 style={{marginTop:"50px"}}>No tienes peliculas en favoritos</h1>
                         </div>
                     )
                 }
             </div>
-        </div>
+        </>
     )
 }
