@@ -1,7 +1,7 @@
 # Configuración:
 <br/>
 
-- <h2>Desde el Front o Client:</h2>
+- <h2>Desde el Front o Client (/sitensoTest/client):</h2>
 
  <p>1) Descargar las dependencias:</p>
  <h6>npm i</h6>
@@ -11,13 +11,13 @@
  
  <hr/>
  
- - <h2>Desde el Back o Api:</h2>
+ - <h2>Desde el Back o Api (/sitensoTest/api):</h2>
  <p>1) Descargar las dependencias:</p>
  <h6>npm i</h6>
  <br/>
- <p>2) Crear una base de datos en postgreSQL (Es necesario tener instalado postgres):</p>
- <h6>Vamos a la terminal de nuestra PC con la "tecla windows + r", escribimos "cmd" y enter.</h6>
- <h5>Escribimos "psql -U -su nombre de usuario de postgres (por defecto es postgres)-"</h5>
+ <p>2) Crear una base de datos en postgreSQL (<a href="https://www.postgresql.org/download/">Es necesario tener instalado postgres</a>):</p>
+ <h6>Vamos a la terminal de nuestra PC, en el caso de windows: con la "tecla windows + r", escribimos "cmd" y enter.</h6>
+ <h5>Escribimos "psql -U -su nombre de usuario de postgres (por defecto es postgres)-" ___ <a href="#error">¿Tira error al escribir el comando?</a></h5>
  <span>En mi caso: psql -U postgres</span>
  <h5>Escribimos nuestra contraseña de postgres (Es la que escriben cuando hacen la instalación)</h5>
  <h5>Escrimos el siguiente comando: Create database -NombreDeLaBaseDeDatos-</h5>
@@ -39,6 +39,11 @@
  <br/>
  <p>5) Correr el back o api en el puerto 3001 (http://localhost:3001):</p>
  <h6/>npm start</h6>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <h4 id="error">SI DESPUES DE INSTALAR POSTGRES E IR A LA CONSOLA DE WINDOWS Y ESCRIBIR PSQL NOS TIRA UN ERROR, POSIBLEMENTE SEA PORQUE NO SE ENCUENTRA POSTGRES AGREGADO COMO VARIABLE DE ENTORNO. <a href="https://remot-technologies.com/como-anadir-postgresql-a-las-variables-de-entorno-de-windows-10/">¿Cómo agrego postgres como variable de entorno?<a/></h4>
  
  
  
