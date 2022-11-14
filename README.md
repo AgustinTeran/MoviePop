@@ -43,7 +43,7 @@
  <br/>
  <br/>
  <br/>
- <h2>SI DESPUES DE INSTALAR POSTGRES E IR A LA CONSOLA DE WINDOWS Y ESCRIBIR PSQL NOS TIRA UN ERROR, POSIBLEMENTE SEA PORQUE NO SE ENCUENTRA POSTGRES AGREGADO COMO VARIABLE DE ENTORNO. <a href="https://remot-technologies.com/como-anadir-postgresql-a-las-variables-de-entorno-de-windows-10/">¿Cómo agrego postgres como variable de entorno?<a/></h2>
+ <h4>SI DESPUES DE INSTALAR POSTGRES E IR A LA CONSOLA DE WINDOWS Y ESCRIBIR PSQL NOS TIRA UN ERROR, POSIBLEMENTE SEA PORQUE NO SE ENCUENTRA POSTGRES AGREGADO COMO VARIABLE DE ENTORNO. <a href="https://remot-technologies.com/como-anadir-postgresql-a-las-variables-de-entorno-de-windows-10/">¿Cómo agrego postgres como variable de entorno?<a/></h4>
  
  
  
