@@ -12,7 +12,7 @@ export default function Card({name,image,id}){
     return (
         <div className="filmCard_container">
             {
-                favorites?.length && logged? (
+                favorites && logged? (
                     <FontAwesomeIcon icon={faHeart}
                        className={favorites.find(e => e.id === id)? "hover fav fav-color" : "hover fav"}
                        onClick={() => {
