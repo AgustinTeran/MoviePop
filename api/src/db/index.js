@@ -1,12 +1,29 @@
 require('dotenv').config()
 var {Sequelize} = require("sequelize")
 // Tragigo las variables de entorno
-var {PASSWORD,DB,USER_DB}  = process.env
+var {PASSWORD,DB,USER_DB,HOST}  = process.env
 
 
-var sequelize = new Sequelize(`postgres://${USER_DB}:${PASSWORD}@localhost:5432/${DB}`,{
-    logging: false
-})
+var sequelize = new Sequelize({
+    database: `${DB}`,
+    dialect: "postgres",
+    host: `${HOST || "localhost"}`,
+    port: "5432",
+    username: `${USER_DB}`,
+    password: `${PASSWORD}`,
+    logging: false,
+    pool: {
+      max: 3
+    },
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+      keepAlive: true,
+    },
+    ssl: true,
+  })
 
 
 // "Inicializo" los modelos

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import "./styles/index.scss"
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import Nav from "./components/nav";
 import Home from "./components/home";
 import Search from "./components/search";
 import Detail from "./components/detail";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Favorites from "./components/favorites";
 
 
@@ -14,6 +14,7 @@ function App() {
     useEffect(() => {
       if(localStorage.user) dispatch({type:"LOGUEADO"})
     },[])
+    var {logged} = useSelector(state => state)
   return (
     <div className="app">
         <Route exact path={"/"}>
@@ -24,10 +25,13 @@ function App() {
           <Nav/>
           <Search/>
         </Route>
-        <Route path={"/favorites"}>
-          <Nav/>
-          <Favorites/>
-        </Route>
+        {
+          logged &&
+          <Route path={"/favorites"}>
+            <Nav/>
+            <Favorites/>
+          </Route>
+        }
         <Route path={"/detail/:id"}>
           <Detail/>
         </Route>

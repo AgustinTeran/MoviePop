@@ -42,10 +42,10 @@ export default function Detail(){
                                 {
                                     puntaje?
                                 [1,2,3,4,5].map(e => {
-                                    if(e <= puntaje.toString().split(".")[0]){
+                                    if(e <= puntaje.toString().split(".")[0] || (e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1][0] > 7)){
                                         return <FontAwesomeIcon className="icon icon-color" key={e} icon={faStar}></FontAwesomeIcon>
                                     }
-                                    if(e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1] <= 7.5 && puntaje.toString().split(".")[1] >= 3.5){
+                                    if(e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1][0] >= 3){
                                         return <FontAwesomeIcon className="icon icon-color" key={e} icon={faStarHalfStroke}></FontAwesomeIcon>
                                     }
                                     return <FontAwesomeIcon className="icon" key={e} icon={faStar}></FontAwesomeIcon>
@@ -56,6 +56,9 @@ export default function Detail(){
                         <div className="text">
                             <h1>{detail.name}</h1>
                             <p>Lenguaje: {detail.language}</p>
+                            {/* detail.genres.length = 3 */}
+                            {/*    i=               0      1        2  */}
+                            {/* detail.genres = [Action, Anime, Science-Fiction] */}
                             <p>Generos: {detail.genres.length? detail.genres.map((g,i) => {
                                 if(i == detail.genres.length - 1 && detail.genres.length > 1){
                                 return  ` y ${g}`

@@ -14,11 +14,11 @@ export default function Nav(){
 
     useEffect(() => {
         if(logged) dispatch(GetFavorites(localStorage.user))
-    },[favorites])
+    },[favorites,logged])
 
-    useEffect(() => {
-         dispatch(GetFavorites(localStorage.user))
-    },[])
+    // useEffect(() => {
+    //      if(logged) dispatch(GetFavorites(localStorage.user))
+    // },[])
     return (
         <nav className="nav_container">
             {
