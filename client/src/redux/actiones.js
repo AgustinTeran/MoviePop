@@ -73,6 +73,7 @@ export function GetFavorites(userId){
 export function AddFavorites(obj){
     return function(dispatch){
         back.post("/favorites",obj)
+        .then(() => dispatch(GetFavorites(obj.userId)))
         .catch(err => console.error(err))
     }
 }
@@ -80,6 +81,7 @@ export function AddFavorites(obj){
 export function RemoveFavorites(obj){
     return function(dispatch){
         back.delete(`/favorites?filmId=${obj.filmId}&userId=${obj.userId}`)
+        .then(() => dispatch(GetFavorites(obj.userId)))
         .catch(err => console.error(err))
     }
 }

@@ -7,14 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetFavorites } from "../redux/actiones";
 
 export default function Nav(){
-    var {logged,favorites} = useSelector(state => state)
+    var {logged} = useSelector(state => state)
     var [openLogin, setOpenLogin] = useState(false)
 
     var dispatch = useDispatch()
 
     useEffect(() => {
         if(logged) dispatch(GetFavorites(localStorage.user))
-    },[favorites,logged])
+    },[logged])
 
     // useEffect(() => {
     //      if(logged) dispatch(GetFavorites(localStorage.user))
