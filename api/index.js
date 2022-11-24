@@ -1,5 +1,5 @@
-var server = require("./server")
-var {sequelize} = require("./db")
+var server = require("./src/server")
+var {sequelize} = require("./src/db")
 
 
 server.listen(3001,() => {

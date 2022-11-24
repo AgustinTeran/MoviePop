@@ -24,7 +24,6 @@ route.get("/favorites/:userId",async(req,res) => {
     }
 })
 
-
 route.post("/", async(req,res) => {
     try{
         // req.body = {name: ... , email: ... , password: ...}
