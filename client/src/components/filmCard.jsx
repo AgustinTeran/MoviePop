@@ -14,9 +14,9 @@ export default function Card({name,image,id}){
             {
                 favorites && logged? (
                     <FontAwesomeIcon icon={faHeart}
-                       className={favorites.find(e => e.id === id)? "hover fav fav-color" : "hover fav"}
+                       className={favorites?.find(e => e.id === id)? "hover fav fav-color" : "hover fav"}
                        onClick={() => {
-                        favorites.find(e => e.id === id)? (
+                        favorites?.find(e => e.id === id)? (
                             dispatch(RemoveFavorites({filmId:id, userId:localStorage.user}))
                         ) : (
                             dispatch(AddFavorites({name, image, userId:localStorage.user, filmId: id}))
