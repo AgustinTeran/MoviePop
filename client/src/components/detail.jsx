@@ -42,10 +42,10 @@ export default function Detail(){
                                 {
                                     puntaje?
                                 [1,2,3,4,5].map(e => {
-                                    if(e <= puntaje.toString().split(".")[0] || (e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1][0]? puntaje.toString().split(".")[1][0] > 7 : true)){
+                                    if(e <= puntaje.toString().split(".")[0] || (e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1]? puntaje.toString().split(".")[1][0] > 7 : true)){
                                         return <FontAwesomeIcon className="icon icon-color" key={e} icon={faStar}></FontAwesomeIcon>
                                     }
-                                    if(e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1][0]? puntaje.toString().split(".")[1][0] >= 3 : true){
+                                    if(e - 1 == puntaje.toString().split(".")[0] && puntaje.toString().split(".")[1]? puntaje.toString().split(".")[1][0] >= 3 : true){
                                         return <FontAwesomeIcon className="icon icon-color" key={e} icon={faStarHalfStroke}></FontAwesomeIcon>
                                     }
                                     return <FontAwesomeIcon className="icon" key={e} icon={faStar}></FontAwesomeIcon>
