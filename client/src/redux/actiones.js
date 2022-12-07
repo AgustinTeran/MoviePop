@@ -1,7 +1,7 @@
 import axios from "axios"
 
 var back = axios.create({
-    baseURL: "https://sitenso-test.vercel.app"
+    baseURL: "http://localhost:3001"
 })
 
 var api = axios.create({
