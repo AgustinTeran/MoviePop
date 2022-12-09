@@ -2,20 +2,12 @@
 <br/>
   <h1>Hay 3 ramas. Main es la del deploy con node. Localmente para ver de manera local con node. Y la de php para ver de manera local con php</h1>
 
-<<<<<<< HEAD
-  <br>
-  <br>
-  <br>
-  <h1>Localmente con Node.js</h1>
-  <br>
-=======
   <br/>
   <br/>
   <br/>
   <h1>Localmente con Node.js</h1>
   <br/>
   <h5>Moverse a la rama localmente</h5>
->>>>>>> 51a0f2f4ce1d512dd35a57c92c33aa0cac0437b6
 - <h2>Desde el Front o Client (/sitensoTest/client):</h2>
 
  <p>1) Descargar las dependencias:</p>
