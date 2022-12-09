@@ -1,7 +1,7 @@
 import axios from "axios"
 
 var back = axios.create({
-    baseURL: "https://sitenso-test.vercel.app"
+    baseURL: "http://localhost/sitensoTest/api"
 })
 
 var api = axios.create({
@@ -26,7 +26,7 @@ export function Details(id){
 
 export function GetReviews(id){
     return function(dispatch){
-        back.get(`/reviews?filmID=${id}`)
+        back.get(`/reviews/getReviews.php?filmID=${id}`)
         .then(res => dispatch({type:"GET_REVIEWS",payload: res.data}))
         .catch(err => console.error(err))
     }
@@ -34,7 +34,7 @@ export function GetReviews(id){
 
 export function CreateReviews(obj){
     return function(dispatch){
-        back.post("/reviews",obj)
+        back.post("/reviews/postReviews.php",obj)
         .then(res => dispatch(GetReviews(obj.filmID)))
         .catch(err => console.error(err))
     }
@@ -42,15 +42,15 @@ export function CreateReviews(obj){
 
 export function CreateUser(obj){
     return function(dispatch){
-        back.post(`/users`,obj)
-        .then(() => {localStorage.user = obj.email; window.location.replace("/")})
+        back.post(`/users/newUser.php`,obj)
+        .then((res) => {localStorage.user = obj.email; window.location.replace("/")})
         .catch(err => console.error(err))
     }
 }
 
 export function Loguearse(obj){
     return function(dispatch){
-        back.post("/users/auth",obj)
+        back.post("/users/auth.php",obj)
         .then(res => {
         if(res.data){
             localStorage.user = obj.email
@@ -64,7 +64,7 @@ export function Loguearse(obj){
 
 export function GetFavorites(userId){
     return function(dispatch){
-        back.get(`/favorites?userId=${userId}`)
+        back.get(`/favorites/getFavorites.php?userId=${userId}`)
         .then(res => {res.data? dispatch({type:"GET_FAVORITES", payload: res.data}) : console.log("Sin fav")})
         .catch(err => console.error(err))
     }
@@ -72,7 +72,7 @@ export function GetFavorites(userId){
 
 export function AddFavorites(obj){
     return function(dispatch){
-        back.post("/favorites",obj)
+        back.post("/favorites/post.php",obj)
         .then(() => dispatch(GetFavorites(obj.userId)))
         .catch(err => console.error(err))
     }
@@ -80,7 +80,9 @@ export function AddFavorites(obj){
 
 export function RemoveFavorites(obj){
     return function(dispatch){
-        back.delete(`/favorites?filmId=${obj.filmId}&userId=${obj.userId}`)
+        // en php no hay delete (Al menos eso tengo entendido)
+        // back.delete(`/favorites?filmId=${obj.filmId}&userId=${obj.userId}`)
+        back.post(`/favorites/deleteFavorites.php?filmId=${obj.filmId}&userId=${obj.userId}`)
         .then(() => dispatch(GetFavorites(obj.userId)))
         .catch(err => console.error(err))
     }

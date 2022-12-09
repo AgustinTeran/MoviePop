@@ -1,6 +1,12 @@
 # Configuración:
 <br/>
+  <h1>Hay 3 ramas. Main es la del deploy con node. Localmente para ver de manera local con node. Y la de php para ver de manera local con php</h1>
 
+  <br>
+  <br>
+  <br>
+  <h1>Localmente con Node.js</h1>
+  <br>
 - <h2>Desde el Front o Client (/sitensoTest/client):</h2>
 
  <p>1) Descargar las dependencias:</p>
@@ -44,6 +50,4 @@
  <br/>
  <br/>
  <h4 id="error">SI DESPUES DE INSTALAR POSTGRES E IR A LA CONSOLA DE WINDOWS Y ESCRIBIR PSQL NOS TIRA UN ERROR, POSIBLEMENTE SEA PORQUE NO SE ENCUENTRA POSTGRES AGREGADO COMO VARIABLE DE ENTORNO. <a href="https://remot-technologies.com/como-anadir-postgresql-a-las-variables-de-entorno-de-windows-10/">¿Cómo agrego postgres como variable de entorno?<a/></h4>
- 
- 
  

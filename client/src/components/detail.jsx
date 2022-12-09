@@ -82,7 +82,7 @@ export default function Detail(){
                             }
                             {
                                 reviews.length?  
-                                    reviews.map((r,i) => <Reviews key={i} comment={r.comment} rating={r.rating} user={r.user}/>)
+                                    reviews.map((r,i) => <Reviews key={i} comment={r.comment} rating={r.rating} user={r.name}/>)
                                     : null
                                 }
                             {
