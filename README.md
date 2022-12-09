@@ -1,6 +1,13 @@
 # Configuración:
 <br/>
+  <h1>Hay 3 ramas. Main es la del deploy con node. Localmente para ver de manera local con node. Y la de php para ver de manera local con php</h1>
 
+  <br/>
+  <br/>
+  <br/>
+  <h1>Localmente con Node.js</h1>
+  <br/>
+  <h5>Moverse a la rama localmente</h5>
 - <h2>Desde el Front o Client (/sitensoTest/client):</h2>
 
  <p>1) Descargar las dependencias:</p>
@@ -42,8 +49,23 @@
  <br/>
  <br/>
  <br/>
- <br/>
  <h4 id="error">SI DESPUES DE INSTALAR POSTGRES E IR A LA CONSOLA DE WINDOWS Y ESCRIBIR PSQL NOS TIRA UN ERROR, POSIBLEMENTE SEA PORQUE NO SE ENCUENTRA POSTGRES AGREGADO COMO VARIABLE DE ENTORNO. <a href="https://remot-technologies.com/como-anadir-postgresql-a-las-variables-de-entorno-de-windows-10/">¿Cómo agrego postgres como variable de entorno?<a/></h4>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <h1>Localmente con php</h1>
+ <br/>
+  <h5>Moverse a la rama php</h5>
+- <h2>Desde el Front o Client (/sitensoTest/client):</h2>
+
+ <p>1) Descargar las dependencias:</p>
+ <h6>npm i</h6>
+ <br/>
+ <p>2) Correr el frontend/client en el puerto 3000 (http://localhost:3000):</p>
+ <h6>npm start</h6>
  
+ <hr/>
  
- 
+ - <h2>Desde el Back o Api (/sitensoTest/api):</h2>
+ <p>Ir a la consola de mysql o a phpmyadmin y crear una base de datos con el nombre "sitensotest". En caso de no querer crearla con este nombre se puede hacer pero despues ir al index.php y cambiar la configuración de la conexión.</p>
