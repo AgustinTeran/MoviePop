@@ -5,7 +5,7 @@ var cors = require("cors")
 
 server.use(express.json())
 server.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://moviepop-three.vercel.app",
     credentials: true
 }))
 
