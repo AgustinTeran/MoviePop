@@ -32,9 +32,17 @@ export function GetReviews(id){
     }
 }
 
+export function GetUser(){
+    return function(dispatch){
+        back.get("/users",{headers: {token: localStorage.getItem("token")}})
+        .then(res => dispatch({type:"USER",payload: res.data}))
+        .catch(err => {alert(err.response.data); localStorage.removeItem("token"); window.location.replace("/")})
+    }
+}
+
 export function CreateReviews(obj){
     return function(dispatch){
-        back.post("/reviews",obj)
+        back.post("/reviews",obj,{headers: {token: localStorage.getItem("token")}})
         .then(res => dispatch(GetReviews(obj.filmID)))
         .catch(err => console.error(err))
     }
@@ -43,7 +51,10 @@ export function CreateReviews(obj){
 export function CreateUser(obj){
     return function(dispatch){
         back.post(`/users`,obj)
-        .then(() => {localStorage.user = obj.email; window.location.replace("/")})
+        .then(res => { 
+            localStorage.setItem("token",res.data)
+            window.location.replace("/")
+        })
         .catch(err => console.error(err))
     }
 }
@@ -53,7 +64,7 @@ export function Loguearse(obj){
         back.post("/users/auth",obj)
         .then(res => {
         if(res.data){
-            localStorage.user = obj.email
+            localStorage.setItem("token",res.data)
             window.location.replace("/")
         }else{
             alert("Email o contraseña incorrectos")
@@ -64,7 +75,7 @@ export function Loguearse(obj){
 
 export function GetFavorites(userId){
     return function(dispatch){
-        back.get(`/favorites?userId=${userId}`)
+        back.get(`/favorites?userId=${userId}`,{headers: {token: localStorage.getItem("token")}})
         .then(res => {res.data? dispatch({type:"GET_FAVORITES", payload: res.data}) : console.log("Sin fav")})
         .catch(err => console.error(err))
     }
@@ -72,7 +83,7 @@ export function GetFavorites(userId){
 
 export function AddFavorites(obj){
     return function(dispatch){
-        back.post("/favorites",obj)
+        back.post("/favorites",obj,{headers: {token: localStorage.getItem("token")}})
         .then(() => dispatch(GetFavorites(obj.userId)))
         .catch(err => console.error(err))
     }
@@ -80,7 +91,7 @@ export function AddFavorites(obj){
 
 export function RemoveFavorites(obj){
     return function(dispatch){
-        back.delete(`/favorites?filmId=${obj.filmId}&userId=${obj.userId}`)
+        back.delete(`/favorites?filmId=${obj.filmId}&userId=${obj.userId}`,{headers: {token: localStorage.getItem("token")}})
         .then(() => dispatch(GetFavorites(obj.userId)))
         .catch(err => console.error(err))
     }

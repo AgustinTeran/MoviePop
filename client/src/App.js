@@ -12,7 +12,7 @@ import Favorites from "./components/favorites";
 function App() {
     var dispatch = useDispatch()
     useEffect(() => {
-      if(localStorage.user) dispatch({type:"LOGUEADO"})
+      if(localStorage.getItem("token")) dispatch({type:"LOGUEADO"})
     },[])
     var {logged} = useSelector(state => state)
   return (

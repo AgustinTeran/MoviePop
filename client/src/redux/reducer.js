@@ -1,4 +1,5 @@
 var initialState = {
+    user: {},
     films: [],
     logged: false,
     detail: {},
@@ -7,6 +8,11 @@ var initialState = {
 
 export default function Reducer(state = initialState, action){
     switch (action.type) {
+        case "USER": 
+            return ({
+                ...state,
+                user: action.payload
+            })
         case "FILMS":
             return ({
                 ...state,

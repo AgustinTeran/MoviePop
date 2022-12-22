@@ -2,7 +2,7 @@ import { faPaperPlane, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useRef } from "react";
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {CreateReviews, GetReviews} from "../redux/actiones"
 
 
@@ -10,6 +10,7 @@ export default function NewReview({filmID}){
     var [miPuntaje,setMiPuntaje] = useState("")
     var text = useRef()
     var dispatch = useDispatch()
+    var {user} = useSelector(state => state)
 
     function handleSub(e){
         e.preventDefault()
@@ -17,7 +18,7 @@ export default function NewReview({filmID}){
         if(miPuntaje){
             dispatch(CreateReviews({
                 filmID,
-                userId: localStorage.user,
+                userId: user.email,
                 comment: text.current.value,
                 rating: miPuntaje
             }))

@@ -5,7 +5,8 @@ var cors = require("cors")
 
 server.use(express.json())
 server.use(cors({
-    origin: "http://localhost:3000"
+    origin: "http://localhost:3000",
+    credentials: true
 }))
 
 

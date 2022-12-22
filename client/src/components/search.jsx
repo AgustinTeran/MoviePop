@@ -4,7 +4,7 @@ import { ClearFilms, Films, Searching } from "../redux/actiones";
 import Card from "./filmCard";
 
 export default function Search(){
-    var {films,search} = useSelector(state => state)
+    var {films} = useSelector(state => state)
     var dispatch = useDispatch()
     var [state,setState] = useState("")
 

@@ -7,7 +7,7 @@ import { AddFavorites, RemoveFavorites } from "../redux/actiones";
 
 
 export default function Card({name,image,id}){
-    var {favorites,logged} = useSelector(state => state)
+    var {favorites,logged,user} = useSelector(state => state)
     var dispatch = useDispatch()
     return (
         <div className="filmCard_container">
@@ -17,9 +17,9 @@ export default function Card({name,image,id}){
                        className={favorites.find(e => e.id === id)? "hover fav fav-color" : "hover fav"}
                        onClick={() => {
                         favorites.find(e => e.id === id)? (
-                            dispatch(RemoveFavorites({filmId:id, userId:localStorage.user}))
+                            dispatch(RemoveFavorites({filmId:id, userId: user.email}))
                         ) : (
-                            dispatch(AddFavorites({name, image, userId:localStorage.user, filmId: id}))
+                            dispatch(AddFavorites({name, image, userId: user.email, filmId: id}))
                         )
                         }}>
                     </FontAwesomeIcon>

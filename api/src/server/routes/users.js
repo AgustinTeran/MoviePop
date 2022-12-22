@@ -1,34 +1,34 @@
 var express = require("express")
 var route = express.Router()
 var {sequelize,users} = require("../../db")
+var bcrypt = require("bcrypt")
+var jwt = require("jsonwebtoken")
+var {SECRET} = process.env
+var autenticacionToken = require("../middlewares/auth")
 
 
-route.get("/favorites/:userId",async(req,res) => {
+route.get("/",autenticacionToken,async(req,res) => {
     try {
-        var {userId} = req.params
-        var favorites = await sequelize.models.users.findByPk(userId,{
-            include: "films"
-        })
-        if(favorites){
-            favorites = favorites.films.map(e => {
-                return {
-                    id: e.id,
-                    image: e.image,
-                    name: e.name
-                }
-            })
-        }
-        res.send(favorites)
+        var {email} = req.user
+
+        res.send(await sequelize.models.users.findByPk(email,{attributes: ["email","name"]}))
     } catch (error) {
         res.send(error.message)
     }
 })
 
+
 route.post("/", async(req,res) => {
     try{
         // req.body = {name: ... , email: ... , password: ...}
-        await sequelize.models.users.create(req.body)
-        res.send("OK")
+        var {name,email,password} = req.body
+
+        var password = await bcrypt.hash(password,10)
+
+        await sequelize.models.users.create({name,email,password})
+        
+        var token = jwt.sign({email},SECRET)
+        res.send(token)
     }catch(e){
         res.send(e.message)
     }
@@ -39,10 +39,18 @@ route.post("/auth", async(req,res) => {
         var {email,password} = req.body
         var user = await sequelize.models.users.findOne({
             where: {
-                email, password
+                email
             }
         })
-        user? res.send("OK") : res.send("")
+
+        if(user){
+            if(await bcrypt.compare(password,user.password)){
+                var token = jwt.sign({email},SECRET)
+                res.send(token)
+            }else{
+                res.send("")
+            }
+        }
     }catch(e){
         res.send(e.message)
     }

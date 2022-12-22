@@ -1,6 +1,8 @@
 var express = require("express")
 var route = express.Router()
 var {sequelize,reviews} = require("../../db")
+var autenticacionToken = require("../middlewares/auth")
+
 
 route.get("/",async(req,res) => {
     try {
@@ -28,9 +30,15 @@ route.get("/",async(req,res) => {
     }
 })
 
-route.post("/", async(req,res) => {
+route.post("/", autenticacionToken, async(req,res) => {
     try{
+        // email en el token
+        var {email} = req.user
+
         var {filmID,userId,comment,rating} = req.body
+
+         // SI EL MAIL DEL TOKEN Y EL MAIL POR QUERY NO COINCIDEN TIRO ERROR
+         if(email !== userId) return res.status(401).send("Acceso Denegado")
 
         var existe = await sequelize.models.reviews.findOne({
             where: {

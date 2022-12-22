@@ -4,21 +4,26 @@ import { faArrowRightFromBracket, faArrowUpFromBracket, faArrowUpRightFromSquare
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { GetFavorites } from "../redux/actiones";
+import { GetFavorites, GetUser } from "../redux/actiones";
 
 export default function Nav(){
-    var {logged} = useSelector(state => state)
+    var {logged,user} = useSelector(state => state)
     var [openLogin, setOpenLogin] = useState(false)
 
     var dispatch = useDispatch()
 
     useEffect(() => {
-        if(logged) dispatch(GetFavorites(localStorage.user))
+        if(logged) {
+            dispatch(GetUser())  
+        }
     },[logged])
 
-    // useEffect(() => {
-    //      if(logged) dispatch(GetFavorites(localStorage.user))
-    // },[])
+    useEffect(() => {
+        if(user.name){
+            dispatch(GetFavorites(user.email))
+        }
+    },[user])
+
     return (
         <nav className="nav_container">
             {
@@ -26,7 +31,7 @@ export default function Nav(){
                     <div>
                         <FontAwesomeIcon className="hover icon" icon={faArrowRightFromBracket}
                          onClick={() => {
-                            localStorage.user = ""
+                            localStorage.removeItem("token")
                             window.location.replace("/")
                         }}></FontAwesomeIcon>
                     </div>
