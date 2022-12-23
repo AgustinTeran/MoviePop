@@ -36,7 +36,7 @@ export function GetUser(){
     return function(dispatch){
         back.get("/users",{headers: {token: localStorage.getItem("token")}})
         .then(res => dispatch({type:"USER",payload: res.data}))
-        .catch(err => {alert(err.response.data); localStorage.removeItem("token"); window.location.replace("/")})
+        .catch(err => {console.log(err); alert(err.response.data); localStorage.removeItem("token"); window.location.replace("/")})
     }
 }
 
